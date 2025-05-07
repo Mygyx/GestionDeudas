@@ -69,6 +69,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VistaHome.resx">
+      <DependentUpon>VistaHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaInicio.resx">
       <DependentUpon>VistaInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +92,10 @@
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{c0324fd7-df28-422f-892f-bc870a08dc5d}</Project>
       <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Objetos\Objetos.csproj">
+      <Project>{485d9bd7-24ee-4933-af55-7859e56b6ae3}</Project>
+      <Name>Objetos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

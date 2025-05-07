@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using Objetos;
 
 namespace GestionDeudas
 {
     public partial class VistaInicio : Form
     {
         Verificacion verificacion = new Verificacion();
+        Usuario usuario = new Usuario();
+       
         public VistaInicio()
         {
             InitializeComponent();
@@ -38,12 +41,38 @@ namespace GestionDeudas
         {
             if (verificacion.VeficacionBaseDatos())
             {
-                MessageBox.Show("La base de datos esta lista.");
+                MessageBox.Show("L.a base de datos esta lista.");
             }
             else 
             {
                 MessageBox.Show("Problemas con la conexion con la base de datos");    
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ObjUsuario usuarioIngresado = GetUsuario();
+            if (usuarioIngresado == null) {
+                MessageBox.Show("Este usuarion no esta registrado en el sistema\nRevise las redenciales de los campos pedidos");
+            }
+            else
+            {
+                VistaHome vistaHome = new VistaHome(usuarioIngresado);
+                vistaHome.Show();
+                this.Hide();
+            }
+        }
+        public ObjUsuario GetUsuario() {
+            try
+            {
+                int cedula = Convert.ToInt32(txtUsu.Text);
+                string contra = Encriptar.GenerarHash(txtContra.Text);
+                return usuario.GetUsuario(cedula, contra);
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex);
+                return null;
+            }
+        
         }
     }
 }

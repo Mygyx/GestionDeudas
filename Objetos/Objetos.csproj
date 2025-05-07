@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0324FD7-DF28-422F-892F-BC870A08DC5D}</ProjectGuid>
+    <ProjectGuid>{485D9BD7-24EE-4933-AF55-7859E56B6AE3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Negocio</RootNamespace>
-    <AssemblyName>Negocio</AssemblyName>
+    <RootNamespace>Objetos</RootNamespace>
+    <AssemblyName>Objetos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,20 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encriptar.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Verificacion.cs" />
+    <Compile Include="ObjUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{8e1a359e-c923-4650-8ad5-3e48f12d820c}</Project>
-      <Name>Datos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Objetos\Objetos.csproj">
-      <Project>{485d9bd7-24ee-4933-af55-7859e56b6ae3}</Project>
-      <Name>Objetos</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
