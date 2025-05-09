@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjAbono.cs" />
+    <Compile Include="ObjCargo.cs" />
+    <Compile Include="ObjCliente.cs" />
+    <Compile Include="ObjCuenta.cs" />
     <Compile Include="ObjUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -24,5 +24,35 @@ namespace GestionDeudas
         {
 
         }
+
+        private void AbrirFormularioEnPanel(Form formulario, Panel panelContenedor)
+        {
+            panelContenedor.Controls.Clear();              // Limpia el panel
+            formulario.TopLevel = false;                   // Indica que no es un formulario de nivel superior
+            formulario.FormBorderStyle = FormBorderStyle.None; // Quita bordes
+            formulario.Dock = DockStyle.Fill;              // Ocupa todo el panel
+            panelContenedor.Controls.Add(formulario);      // Agrega al panel
+            formulario.Show();                             // Muestra el formulario
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaCliente(), pnl);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaCuentas(), pnl);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaAbono(usuarioIngresado), pnl);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaCargo(usuarioIngresado), pnl);
+        }
     }
 }

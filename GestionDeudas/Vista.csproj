@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VistaAbono.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaAbono.Designer.cs">
+      <DependentUpon>VistaAbono.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaCargo.Designer.cs">
+      <DependentUpon>VistaCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaCliente.Designer.cs">
+      <DependentUpon>VistaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaCuentas.Designer.cs">
+      <DependentUpon>VistaCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +84,9 @@
     <Compile Include="VistaInicio.Designer.cs">
       <DependentUpon>VistaInicio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VistaAbono.resx">
+      <DependentUpon>VistaAbono.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -69,6 +96,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VistaCargo.resx">
+      <DependentUpon>VistaCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaCliente.resx">
+      <DependentUpon>VistaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaCuentas.resx">
+      <DependentUpon>VistaCuentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaHome.resx">
       <DependentUpon>VistaHome.cs</DependentUpon>
     </EmbeddedResource>
