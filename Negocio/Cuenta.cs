@@ -18,24 +18,85 @@ namespace Negocio
             bd.InsertCuenta(obj);
         }
 
-        public void mostrarCuentrasPorCedula(int cedula, DataGridView dgv)
+        public void mostrarCuentrasPorCedula(string cedula, DataGridView dgv)
         {
-            DataTable dt = bd.BuscarCuentasActivasPorCedulaParcial(cedula);
+            DataTable dt = bd.BuscarCuentasActivasConCliente(cedula);
 
             dgv.Rows.Clear(); // Limpia filas anteriores si las hay
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 dgv.Rows.Add(
-                    dt.Rows[i]["cedula_cuenta"],
+                    dt.Rows[i]["cuenta"],
                     dt.Rows[i]["nombre"],
                     dt.Rows[i]["telefono"],
                     dt.Rows[i]["direccion"],
-                    dt.Rows[i]["saldo_actual"],
-                    Convert.ToDateTime(dt.Rows[i]["fecha_creacion"]).ToString("yyyy-MM-dd")
+                    dt.Rows[i]["saldo"],
+                    Convert.ToDateTime(dt.Rows[i]["fecha"]).ToString("yyyy-MM-dd")
                 );
             }
         }
+        public void mostrarCuentras( DataGridView dgv)
+        {
+            DataTable dt = bd.ObtenerCuentasActivasConCliente2();
+
+            dgv.Rows.Clear(); // Limpia filas anteriores si las hay
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dgv.Rows.Add(
+                    dt.Rows[i]["cuenta"],
+                    dt.Rows[i]["nombre"],
+                    dt.Rows[i]["telefono"],
+                    dt.Rows[i]["direccion"],
+                    dt.Rows[i]["saldo"],
+                    Convert.ToDateTime(dt.Rows[i]["fecha"]).ToString("yyyy-MM-dd")
+                );
+            }
+        }
+        public void CargarClientesActivosConCuentaEnDGV(DataGridView dgv)
+        {
+           
+            DataTable tabla = bd.ObtenerClientesActivosConDetalleCuenta();
+
+            dgv.Rows.Clear(); // Limpia filas anteriores
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv.Rows.Add(
+                    fila["cedula"].ToString(),
+                    fila["nombre"].ToString(),
+                    fila["telefono"].ToString(),
+                    fila["direccion"].ToString(),
+                    Convert.ToDateTime(fila["fecha_creacion"]).ToShortDateString(),
+                    fila["estado_cuenta"].ToString()
+                );
+            }
+        }
+        public void CargarClientesFiltradosEnDGV(DataGridView dgv, string filtro)
+        {
+          
+            DataTable tabla = bd.BuscarClientesActivosConDetalleCuenta(filtro);
+
+            dgv.Rows.Clear(); // Limpia filas anteriores
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv.Rows.Add(
+                    fila["cedula"].ToString(),
+                    fila["nombre"].ToString(),
+                    fila["telefono"].ToString(),
+                    fila["direccion"].ToString(),
+                    Convert.ToDateTime(fila["fecha_creacion"]).ToShortDateString(),
+                    fila["estado_cuenta"].ToString()
+                );
+            }
+        }
+
+        public void actilizarEstado(int ced, bool est) {
+            bd.ActualizarEstadoCuenta(ced, est);
+        }
+
 
     }
 }

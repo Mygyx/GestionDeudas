@@ -19,5 +19,8 @@ namespace Negocio
             bd.UpdateCliente(obj);
         }
 
+        public void ActulizarClienteDeEmpresa(int cedulaCliente, int idCliente) { 
+            bd.ActualizarEmpresaCliente(cedulaCliente, idCliente);
+        }
     }
 }

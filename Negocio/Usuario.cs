@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Datos;
 using Objetos;
 
@@ -33,6 +34,51 @@ namespace Negocio
             }
 
             return objUsuario;
+        }
+
+        public void CargarUsuariosPorCedulaEnDGV(DataGridView dgv, string cedulaParcial)
+        {
+            DataTable tabla = bd.BuscarUsuariosPorCedula(cedulaParcial);
+
+            dgv.Rows.Clear(); // Limpia todas las filas
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv.Rows.Add(
+                    fila["cedula"].ToString(),
+                    fila["nombre"].ToString(),
+                    
+                    fila["fecha_creacion"].ToString(),
+                    fila["correo"].ToString(),
+                    fila["estado"].ToString()
+                );
+            }
+        }
+        public void CargarTodosLosUsuariosEnDGV(DataGridView dgv)
+        {
+            DataTable tabla = bd.ObtenerUsuariosTpdos(); // obtiene todos los usuarios
+
+            dgv.Rows.Clear(); // limpia las filas existentes
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv.Rows.Add(
+                    fila["cedula"].ToString(),
+                    fila["nombre"].ToString(),
+                  
+                    fila["fecha_creacion"].ToString(),
+                    fila["correo"].ToString(),
+                    fila["estado"].ToString()
+                );
+            }
+        }
+
+        public void insertUsuario(ObjUsuario obj) { 
+            bd.InsertarUsuario(obj);
+        }
+
+        public void ActlizarUsuario(ObjUsuario obj) {
+            bd.ActualizarUsuario(obj);
         }
 
     }

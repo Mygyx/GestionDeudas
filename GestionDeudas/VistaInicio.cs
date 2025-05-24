@@ -57,6 +57,7 @@ namespace GestionDeudas
             }
             else
             {
+                Console.WriteLine(usuarioIngresado.correo);
                 VistaHome vistaHome = new VistaHome(usuarioIngresado);
                 vistaHome.Show();
                 this.Hide();

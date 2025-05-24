@@ -54,5 +54,15 @@ namespace GestionDeudas
         {
             AbrirFormularioEnPanel(new VistaCargo(usuarioIngresado), pnl);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaUsuario(),pnl);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaReportes(usuarioIngresado), pnl);
+        }
     }
 }

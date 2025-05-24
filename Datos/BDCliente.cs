@@ -43,6 +43,30 @@ namespace Datos
             cmd.ExecuteNonQuery();
             conexionRetorno.Close();
         }
+        public void ActualizarEmpresaCliente(int cedulaCliente, int nuevoIdEmpresa)
+        {
+            try
+            {
+                conexionRetorno = conexion.ConexionBD();
+
+                string query = "UPDATE cliente SET id_empresa = " + nuevoIdEmpresa +
+                               " WHERE cedula = " + cedulaCliente;
+
+                cmd = new NpgsqlCommand(query, conexionRetorno);
+                int filasAfectadas = cmd.ExecuteNonQuery();
+                conexionRetorno.Close();
+
+                if (filasAfectadas > 0)
+                    Console.WriteLine("Empresa del cliente actualizada correctamente.");
+                else
+                    Console.WriteLine("No se encontró un cliente con esa cédula.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar la empresa del cliente:\n" + ex.Message);
+            }
+        }
+
 
     }
 }

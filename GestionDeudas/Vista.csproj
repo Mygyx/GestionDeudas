@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="QuestPDF, Version=2025.4.3.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuestPDF.2025.4.3\lib\netstandard2.0\QuestPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -84,6 +89,42 @@
     <Compile Include="VistaInicio.Designer.cs">
       <DependentUpon>VistaInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaReportes.Designer.cs">
+      <DependentUpon>VistaReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaRPClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaRPClientes.Designer.cs">
+      <DependentUpon>VistaRPClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaRPFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaRPFecha.Designer.cs">
+      <DependentUpon>VistaRPFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaRPMonto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaRPMonto.Designer.cs">
+      <DependentUpon>VistaRPMonto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaRPUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaRPUsuario.Designer.cs">
+      <DependentUpon>VistaRPUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaUsuario.Designer.cs">
+      <DependentUpon>VistaUsuario.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="VistaAbono.resx">
       <DependentUpon>VistaAbono.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +136,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="VistaCargo.resx">
       <DependentUpon>VistaCargo.cs</DependentUpon>
@@ -111,6 +153,25 @@
     <EmbeddedResource Include="VistaInicio.resx">
       <DependentUpon>VistaInicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaReportes.resx">
+      <DependentUpon>VistaReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaRPClientes.resx">
+      <DependentUpon>VistaRPClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaRPFecha.resx">
+      <DependentUpon>VistaRPFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaRPMonto.resx">
+      <DependentUpon>VistaRPMonto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaRPUsuario.resx">
+      <DependentUpon>VistaRPUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaUsuario.resx">
+      <DependentUpon>VistaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,5 +195,15 @@
       <Name>Objetos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoSuperFamilia.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\QuestPDF.2025.4.3\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2025.4.3\build\net4\QuestPDF.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\QuestPDF.2025.4.3\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuestPDF.2025.4.3\build\net4\QuestPDF.targets'))" />
+  </Target>
 </Project>
