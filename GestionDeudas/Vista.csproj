@@ -75,6 +75,12 @@
     <Compile Include="VistaCuentas.Designer.cs">
       <DependentUpon>VistaCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaEmpre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaEmpre.Designer.cs">
+      <DependentUpon>VistaEmpre.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,12 @@
     </Compile>
     <Compile Include="VistaRPClientes.Designer.cs">
       <DependentUpon>VistaRPClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaRPEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaRPEmpresas.Designer.cs">
+      <DependentUpon>VistaRPEmpresas.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaRPFecha.cs">
       <SubType>Form</SubType>
@@ -147,6 +159,9 @@
     <EmbeddedResource Include="VistaCuentas.resx">
       <DependentUpon>VistaCuentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VistaEmpre.resx">
+      <DependentUpon>VistaEmpre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VistaHome.resx">
       <DependentUpon>VistaHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaRPClientes.resx">
       <DependentUpon>VistaRPClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaRPEmpresas.resx">
+      <DependentUpon>VistaRPEmpresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaRPFecha.resx">
       <DependentUpon>VistaRPFecha.cs</DependentUpon>

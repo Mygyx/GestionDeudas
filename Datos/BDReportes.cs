@@ -351,6 +351,120 @@ namespace Datos
 
             return tabla;
         }
+        public DataTable ObtenerReporteMovimientosPorCedulaEmpresas(string filtroCedula)
+        {
+            DataTable tabla = new DataTable();
+
+            using (var conn = conexion.ConexionBD())
+            {
+                string query = $@"
+                    SELECT          
+                        cl.cedula,
+                        cl.nombre AS cliente_nombre,
+                        cl.telefono,
+                        cu.saldo_actual,
+                        cu.fecha_creacion AS fecha_cuenta,
+                        'Abono' AS tipo_movimiento,
+                        ab.monto,
+                        ab.fecha AS fecha_movimiento,
+                        ab.saldo_anterior,
+                        u.nombre AS usuario_responsable,
+                        e.nombre AS empresa
+                    FROM abono ab
+                    JOIN cliente cl ON ab.id_cliente = cl.cedula
+                    JOIN cuenta cu ON cl.cedula = cu.cedula_cuenta
+                    JOIN usuario u ON ab.id_usuario = u.cedula
+                    LEFT JOIN empresa e ON cl.id_empresa = e.id
+                    WHERE CAST(cl.cedula AS TEXT) ILIKE '%{filtroCedula}%'
+
+                    UNION ALL
+
+                    SELECT 
+                        cl.cedula,
+                        cl.nombre AS cliente_nombre,
+                        cl.telefono,
+                        cu.saldo_actual,
+                        cu.fecha_creacion AS fecha_cuenta,
+                        'Cargo' AS tipo_movimiento,
+                        ca.monto,
+                        ca.fecha AS fecha_movimiento,
+                        ca.saldo_anterior,
+                        u.nombre AS usuario_responsable,
+                        e.nombre AS empresa
+                    FROM cargo ca
+                    JOIN cliente cl ON ca.id_cliente = cl.cedula
+                    JOIN cuenta cu ON cl.cedula = cu.cedula_cuenta
+                    JOIN usuario u ON ca.id_usuario = u.cedula
+                    LEFT JOIN empresa e ON cl.id_empresa = e.id
+                    WHERE CAST(cl.cedula AS TEXT) ILIKE '%{filtroCedula}%'
+
+                    ORDER BY cedula, fecha_movimiento;";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                using (var adapter = new NpgsqlDataAdapter(cmd))
+                {
+                    adapter.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+        public DataTable ObtenerReporteTodosLosMovimientosEmpresas()
+        {
+            DataTable tabla = new DataTable();
+
+            using (var conn = conexion.ConexionBD())
+            {
+                string query = @"
+                    SELECT 
+                        cl.cedula,
+                        cl.nombre AS cliente_nombre,
+                        cl.telefono,
+                        cu.saldo_actual,
+                        cu.fecha_creacion AS fecha_cuenta,
+                        'Abono' AS tipo_movimiento,
+                        ab.monto,
+                        ab.fecha AS fecha_movimiento,
+                        ab.saldo_anterior,
+                        u.nombre AS usuario_responsable,
+                        e.nombre AS empresa
+                    FROM abono ab
+                    JOIN cliente cl ON ab.id_cliente = cl.cedula
+                    JOIN cuenta cu ON cl.cedula = cu.cedula_cuenta
+                    JOIN usuario u ON ab.id_usuario = u.cedula
+                    LEFT JOIN empresa e ON cl.id_empresa = e.id
+
+                    UNION ALL
+
+                    SELECT 
+                        cl.cedula,
+                        cl.nombre AS cliente_nombre,
+                        cl.telefono,
+                        cu.saldo_actual,
+                        cu.fecha_creacion AS fecha_cuenta,
+                        'Cargo' AS tipo_movimiento,
+                        ca.monto,
+                        ca.fecha AS fecha_movimiento,
+                        ca.saldo_anterior,
+                        u.nombre AS usuario_responsable,
+                        e.nombre AS empresa
+                    FROM cargo ca
+                    JOIN cliente cl ON ca.id_cliente = cl.cedula
+                    JOIN cuenta cu ON cl.cedula = cu.cedula_cuenta
+                    JOIN usuario u ON ca.id_usuario = u.cedula
+                    LEFT JOIN empresa e ON cl.id_empresa = e.id
+
+                    ORDER BY cedula, fecha_movimiento;";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                using (var adapter = new NpgsqlDataAdapter(cmd))
+                {
+                    adapter.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
 
     }
 }

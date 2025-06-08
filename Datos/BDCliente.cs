@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Npgsql;
 using Objetos;
 
@@ -65,6 +67,40 @@ namespace Datos
             {
                 Console.WriteLine("Error al actualizar la empresa del cliente:\n" + ex.Message);
             }
+        }
+
+        public DataTable GetClientesConEmpresa()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                conexionRetorno = conexion.ConexionBD();
+
+                string query = @"
+            SELECT 
+                c.cedula,
+                c.nombre,
+                c.telefono,
+                c.direccion,
+                c.estado,
+                c.fecha_creacion,
+                e.nombre AS nombre_empresa
+            FROM cliente c
+            LEFT JOIN empresa e ON c.id_empresa = e.id";
+
+                cmd = new NpgsqlCommand(query, conexionRetorno);
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
+
+                da.Fill(dt);
+                conexionRetorno.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener clientes:\n" + ex.Message);
+            }
+
+            return dt;
         }
 
 

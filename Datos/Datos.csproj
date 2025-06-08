@@ -49,6 +49,7 @@
     <Compile Include="BDCargo.cs" />
     <Compile Include="BDCliente.cs" />
     <Compile Include="BDCuenta.cs" />
+    <Compile Include="BDEmpresa.cs" />
     <Compile Include="BDReportes.cs" />
     <Compile Include="BDUsuario.cs" />
     <Compile Include="Conexion.cs" />

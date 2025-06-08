@@ -33,6 +33,7 @@
             this.rpFecha = new System.Windows.Forms.RadioButton();
             this.prMon = new System.Windows.Forms.RadioButton();
             this.rpUsu = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // rpCli
@@ -94,12 +95,26 @@
             this.rpUsu.UseVisualStyleBackColor = true;
             this.rpUsu.CheckedChanged += new System.EventHandler(this.rpUsu_CheckedChanged);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(991, 1);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(236, 33);
+            this.radioButton1.TabIndex = 11;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Reporte Empresas";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // VistaReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.rpUsu);
             this.Controls.Add(this.prMon);
             this.Controls.Add(this.rpFecha);
@@ -120,5 +135,6 @@
         private System.Windows.Forms.RadioButton rpFecha;
         private System.Windows.Forms.RadioButton prMon;
         private System.Windows.Forms.RadioButton rpUsu;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

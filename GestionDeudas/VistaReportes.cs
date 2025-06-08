@@ -54,5 +54,10 @@ namespace GestionDeudas
         {
             AbrirFormularioEnPanel(new VistaRPUsuario(usuario), pnl);
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new VistaRPEmpresas(usuario), pnl);
+        }
     }
 }

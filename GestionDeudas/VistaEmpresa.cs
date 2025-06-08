@@ -75,7 +75,7 @@ namespace GestionDeudas
                 int cedulaCliente = Convert.ToInt32(rowCliente.Cells[0].Value);
                 int idEmpresa = Convert.ToInt32(rowEmpresa.Cells[0].Value);
 
-                cliente.ActulizarEmpresa(
+                cliente.ActulizarClienteDeEmpresa(cedulaCliente, idEmpresa);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);

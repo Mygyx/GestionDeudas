@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,29 @@ namespace Datos
             {
                 MessageBox.Show("Error al actualizar empresa:\n" + ex.Message);
             }
+        }
+        public DataTable GetEmpresas()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                conexionRetorno = conexion.ConexionBD();
+
+                string query = "SELECT id, nombre, encargado, estado, fecha_creacion, telefono FROM empresa";
+
+                cmd = new NpgsqlCommand(query, conexionRetorno);
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
+
+                da.Fill(dt);
+                conexionRetorno.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener empresas:\n" + ex.Message);
+            }
+
+            return dt;
         }
 
     }

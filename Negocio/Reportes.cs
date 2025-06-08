@@ -235,6 +235,47 @@ namespace Negocio
                 );
             }
         }
+        public void CargarMovimientosFiltradosEnDGVEmpresas(DataGridView dgv, string filtroCedula)
+        {
+            DataTable tabla;
+
+            if (!string.IsNullOrWhiteSpace(filtroCedula))
+                tabla = bd.ObtenerReporteMovimientosPorCedulaEmpresas(filtroCedula);
+            else
+                tabla = bd.ObtenerReporteTodosLosMovimientosEmpresas();
+
+            dgv.Columns.Clear();
+            dgv.Rows.Clear();
+
+            dgv.Columns.Add("cedula", "Cédula");
+            dgv.Columns.Add("cliente_nombre", "Nombre");
+            dgv.Columns.Add("telefono", "Teléfono");
+            dgv.Columns.Add("saldo_actual", "Saldo Cuenta");
+            dgv.Columns.Add("fecha_cuenta", "Fecha Cuenta");
+            dgv.Columns.Add("tipo_movimiento", "Tipo Movimiento");
+            dgv.Columns.Add("monto", "Monto");
+            dgv.Columns.Add("fecha_movimiento", "Fecha Movimiento");
+            dgv.Columns.Add("saldo_anterior", "Saldo Anterior");
+            dgv.Columns.Add("usuario_responsable", "Usuario");
+            dgv.Columns.Add("empresa", "Empresa");
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv.Rows.Add(
+                    fila["cedula"].ToString(),
+                    fila["cliente_nombre"].ToString(),
+                    fila["telefono"].ToString(),
+                    fila["saldo_actual"].ToString(),
+                    Convert.ToDateTime(fila["fecha_cuenta"]).ToShortDateString(),
+                    fila["tipo_movimiento"].ToString(),
+                    fila["monto"].ToString(),
+                    Convert.ToDateTime(fila["fecha_movimiento"]).ToString("g"),
+                    fila["saldo_anterior"].ToString(),
+                    fila["usuario_responsable"].ToString(),
+                    fila["empresa"].ToString()
+                );
+            }
+        }
 
 
     }
